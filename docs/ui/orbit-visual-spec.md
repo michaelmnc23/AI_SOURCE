@@ -1,5 +1,22 @@
 # Orbit Visual Specification — Cinematic System
 
+## 0. Reference Mockup
+
+Primary visual reference:
+
+`/public/mockups/orbit-system-overview.png`
+
+All visual decisions MUST align with this image.
+
+Section mapping:
+- Top-left → Orbit idle state
+- Top-right → Entering memory transition
+- Bottom-left → Story memory layout
+- Bottom-middle → Gallery memory layout
+- Bottom-right → Other nodes / cards
+
+---
+
 ## 1. Visual Intent
 
 The UI must feel:
@@ -117,13 +134,13 @@ When entering memory:
 
 ## 10. Memory UI
 
-### Story View
+### Story View (Bottom-left of mockup)
 - large rounded image
 - soft glow border
 - text on right
 - timeline below
 
-### Gallery View
+### Gallery View (Bottom-middle of mockup)
 - centered main image
 - side images blurred
 - navigation arrows
