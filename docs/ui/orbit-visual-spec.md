@@ -29,7 +29,30 @@ Avoid flat UI. Everything should feel layered and glowing.
 
 ---
 
-## 2. Color System
+## 2. Data-Driven Design (CRITICAL)
+
+This system is NOT static.
+
+All visible content MUST be dynamically driven by data.
+
+### Dynamic Elements
+
+- Couple names
+- Center initials
+- Node labels
+- Story text
+- Images (gallery, thumbnails)
+- Event details
+
+### Rules
+
+- NEVER hardcode text like "A & R"
+- NEVER hardcode images
+- ALWAYS derive from props / data source
+
+---
+
+## 3. Color System
 
 ### Primary
 - Gold glow: #F5C27A (range allowed)
@@ -47,7 +70,7 @@ Avoid flat UI. Everything should feel layered and glowing.
 
 ---
 
-## 3. Lighting Model
+## 4. Lighting Model
 
 - Central light source from orbit core
 - All elements subtly affected by this light
@@ -55,7 +78,29 @@ Avoid flat UI. Everything should feel layered and glowing.
 
 ---
 
-## 4. Orbit Composition
+## 5. Center Core
+
+- Circular glowing element
+- Strongest brightness in scene
+- Radial gradient outward
+
+### Content (Dynamic)
+
+- Displays initials derived from couple names
+
+Example:
+- Aurelia & Rory → A & R
+- Michael & Nathaniel → M & N
+
+### Rules
+
+- MUST be computed dynamically
+- MUST NOT be hardcoded
+- Typography style remains constant
+
+---
+
+## 6. Orbit Composition
 
 - Two orbit rings (inner + outer)
 - Thin glowing strokes
@@ -64,22 +109,13 @@ Avoid flat UI. Everything should feel layered and glowing.
 
 ---
 
-## 5. Center Core
-
-- Circular glowing element
-- Contains initials (A & R equivalent)
-- Strongest brightness in scene
-- Radial gradient outward
-
----
-
-## 6. Node Design
+## 7. Node Design
 
 Each node:
-- Circular image thumbnail
+- Circular image thumbnail (dynamic)
 - Gold glowing border
 - Soft bloom (outer glow)
-- Label text outside node
+- Label text outside node (dynamic)
 
 ### States
 
@@ -97,7 +133,7 @@ Active:
 
 ---
 
-## 7. Depth System
+## 8. Depth System
 
 Layer separation is REQUIRED:
 
@@ -112,7 +148,7 @@ Background:
 
 ---
 
-## 8. Particle System
+## 9. Particle System
 
 - slow floating motion
 - subtle randomness
@@ -121,7 +157,7 @@ Background:
 
 ---
 
-## 9. Memory Transition Visuals
+## 10. Memory Transition Visuals
 
 When entering memory:
 
@@ -132,22 +168,22 @@ When entering memory:
 
 ---
 
-## 10. Memory UI
+## 11. Memory UI
 
 ### Story View (Bottom-left of mockup)
-- large rounded image
+- large rounded image (dynamic)
 - soft glow border
-- text on right
-- timeline below
+- text on right (dynamic)
+- timeline below (dynamic)
 
 ### Gallery View (Bottom-middle of mockup)
-- centered main image
-- side images blurred
+- centered main image (dynamic)
+- side images blurred (dynamic)
 - navigation arrows
 
 ---
 
-## 11. UI Elements
+## 12. UI Elements
 
 - minimal
 - gold outlined buttons
@@ -155,7 +191,7 @@ When entering memory:
 
 ---
 
-## 12. Motion Tone
+## 13. Motion Tone
 
 - slow
 - smooth
@@ -164,19 +200,20 @@ When entering memory:
 
 ---
 
-## 13. Anti-Patterns
+## 14. Anti-Patterns
 
 DO NOT:
 - use flat colors
 - use harsh shadows
 - use sharp edges everywhere
 - create static feeling UI
+- hardcode user content
 
 ---
 
-## 14. Guiding Principle
+## 15. Guiding Principle
 
 This is not UI.
 
 This is:
-> a glowing, living memory space
+> a glowing, living memory space powered by dynamic data
