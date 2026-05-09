@@ -1,122 +1,180 @@
-# Orbit System (UI Core)
+# Orbit System — Cinematic Interaction Specification
 
-## 1. Concept
-The Orbit System is the **primary interaction gateway** of the UI.
-It starts as a focused, minimal centerpiece and expands into a split-layout experience upon interaction.
+## 1. Overview
 
----
+The Orbit System is the primary navigation mechanism of the cinematic wedding invitation.
 
-## 2. Layout States
+It replaces traditional scrolling with an interactive, spatial exploration model where users navigate content by interacting with orbiting nodes.
 
-### State A — Idle (Initial)
-- Orbit position: center (50% x, 50% y)
-- Orbit scale: 1
-- Background: fully visible (cinematic)
-- Main card: not rendered
-- User focus: orbit only
+This system is designed to feel:
+- immersive
+- fluid
+- emotionally paced
+- cinematic rather than functional
 
 ---
 
-### State B — Activated (After Click)
-- Orbit moves to left side
-- Orbit final position: x = 20% viewport width, y = 50%
-- Orbit scale: 0.85
-- Main card appears on right
-- Main card position: x = 65% viewport width
+## 2. Core Principles
+
+### 2.1 Persistent World
+
+- The orbit system MUST NEVER unmount
+- It exists as a continuous spatial layer
+- Even when entering memory, it remains visible (blurred and de-emphasized)
+
+### 2.2 Camera Illusion (No Real Camera)
+
+All transitions simulate a camera using:
+- scale
+- blur
+- opacity
+- slight translation
+
+No actual 3D camera is used.
 
 ---
 
-## 3. Animation Timeline
+## 3. Node System
 
-### Trigger
-- Event: user click on orbit
+### 3.1 Node Definitions
 
-### Sequence
-1. Orbit scale down slightly (1 → 0.9)
-   - duration: 150ms
-   - easing: ease-out
+There are exactly 5 primary nodes:
+- couple
+- story
+- gallery
+- event
+- interaction
 
-2. Orbit translate to left
-   - duration: 600ms
-   - easing: cubic-bezier(0.4, 0, 0.2, 1)
+### 3.2 Spatial Layout
 
-3. Main card fade + slide in
-   - delay: 300ms (starts mid orbit movement)
-   - duration: 500ms
-   - opacity: 0 → 1
-   - translateX: +40px → 0
+- Nodes are positioned radially using fixed angles
+- Orbit rotates slowly during idle state
+- Rotation MUST be visually smooth and continuous
+
+### 3.3 Interaction Model
+
+Each node:
+- is individually clickable
+- has hover/tap feedback (scale + glow)
+- triggers memory transition
 
 ---
 
-## 4. Orbit Behavior
+## 4. Layer Architecture (CRITICAL)
 
-- Orbit consists of multiple nodes rotating around a center
-- Rotation must be continuous and smooth
-- Speed: slow (non-distracting)
+### 4.1 Background Layer
+- gradient + particles
+- pointer-events: none
 
-### Constraints
-- Nodes must never collide
-- Maintain equal spacing between nodes
-- Rotation must not break during layout transition
+### 4.2 Orbit Visual Layer
+- handles rotation animation
+- pointer-events: none
+
+### 4.3 Orbit Interaction Layer
+- contains clickable nodes
+- pointer-events: auto
+
+### 4.4 Memory Layer
+- floating content panel
+- appears above orbit
+
+### 4.5 UI Overlay
+- navigation controls (back, reset, arrows, audio)
 
 ---
 
 ## 5. State Machine
 
 States:
-- IDLE
-- TRANSITIONING
-- ACTIVE
-
-Transitions:
-- IDLE → TRANSITIONING (on click)
-- TRANSITIONING → ACTIVE (after animation complete)
+- intro
+- orbit
+- memory
 
 Rules:
-- No re-trigger during TRANSITIONING
-- Clicking again in ACTIVE state can be defined later
+- intro: orbit hidden
+- orbit: nodes interactive
+- memory: orbit paused + blurred
 
 ---
 
-## 6. Responsiveness
+## 6. Transition System
 
-Desktop:
-- Use horizontal split (orbit left, card right)
+### 6.1 Intro → Orbit
+1. User taps invitation
+2. Intro dissolves into particles
+3. Particles expand outward
+4. Orbit nodes form from particles
+5. Orbit fades into clarity
 
-Mobile:
-- Orbit stays top center
-- Main card appears below
-- Animation becomes vertical (top → center stack)
+### 6.2 Orbit → Memory
+1. Rotation pauses
+2. Node scales slightly
+3. Camera zoom (scale: 1.1–1.2)
+4. Background blur increases
+5. Memory panel appears LAST
 
----
+Duration: 700–800ms
 
-## 7. Visual Rules
+### 6.3 Memory Navigation
+- Lateral navigation between nodes
+- No return to orbit required
+- History stack updated
 
-- Orbit must remain the visual anchor
-- Main card must not overpower orbit
-- Maintain cinematic spacing (no cramped layout)
+### 6.4 Back Behavior
+- Returns to previous node
+- If no history → orbit state
 
----
-
-## 8. Future Extensions
-
-- Multiple orbit nodes as navigation
-- Dynamic content loading per node
-- Reverse animation (back to center)
-
----
-
-## 9. Implementation Notes (for Codex)
-
-- Use transform (translate/scale) instead of absolute positioning when possible
-- Avoid layout thrashing
-- Prefer CSS transitions or Framer Motion
-- Ensure SSR safety (Next.js)
+### 6.5 Reset
+- Clears history
+- Returns to orbit
+- Camera zooms out
+- Rotation resumes
 
 ---
 
-## 10. Open Questions
+## 7. Memory Layer
 
-- What happens on second click?
-- Should orbit control navigation between cards?
-- Should animation be interruptible?
+### Presentation
+- Floating panel (right desktop, center mobile)
+- Slide + fade animation
+
+### Content Mapping
+- couple → intro
+- story → timeline
+- gallery → media
+- event → details
+- interaction → RSVP / wishes / gift
+
+---
+
+## 8. Audio Integration
+
+- Starts after user interaction
+- Default ON
+- Looping
+- Smooth fade in/out
+- MUST persist across transitions
+
+---
+
+## 9. Mobile Constraints
+
+- Tap-based interaction only
+- 60fps target
+
+---
+
+## 10. Anti-Patterns
+
+- Do NOT unmount OrbitSystem
+- Do NOT use routing
+- Do NOT block pointer events incorrectly
+- Do NOT use instant transitions
+
+---
+
+## 11. Extensibility
+
+- Theme swapping
+- Dynamic node count
+- Reusable content modules
