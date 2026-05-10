@@ -56,7 +56,24 @@ export type AppData = {
 
 ---
 
-## 3. Derived Data Rules
+## 3. Asset Path Rules (CRITICAL)
+
+All asset paths are served from Next.js `/public` folder.
+
+Mapping:
+
+/public/images/* → "/images/..."
+/public/audio/*  → "/audio/..."
+
+Rules:
+
+- NEVER include `/public` in paths
+- ALWAYS use root-relative paths ("/... ")
+- Codex MUST assume these map to `/public`
+
+---
+
+## 4. Derived Data Rules
 
 Initials MUST be computed dynamically:
 
@@ -66,7 +83,7 @@ const initials = `${personA[0]} & ${personB[0]}`
 
 ---
 
-## 4. Dummy Data (Development Only)
+## 5. Dummy Data (Development Only)
 
 ```ts
 export const data: AppData = {
@@ -117,7 +134,7 @@ export const data: AppData = {
 
 ---
 
-## 5. Rules
+## 6. Rules
 
 - UI MUST render from this data
 - NO placeholder text allowed outside this file
@@ -126,7 +143,7 @@ export const data: AppData = {
 
 ---
 
-## 6. Future Extension
+## 7. Future Extension
 
 This structure must support:
 
