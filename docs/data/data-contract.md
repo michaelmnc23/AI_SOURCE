@@ -37,12 +37,20 @@ export type EventInfo = {
   location: string
 }
 
+export type AudioConfig = {
+  src: string
+  autoplayAfterIntro: boolean
+  loop: boolean
+  volume: number
+}
+
 export type AppData = {
   couple: Couple
   nodes: Node[]
   story: StoryItem[]
   gallery: string[]
   event: EventInfo
+  audio: AudioConfig
 }
 ```
 
@@ -97,6 +105,12 @@ export const data: AppData = {
     date: "2026-12-12",
     time: "10:00 AM",
     location: "Jakarta"
+  },
+  audio: {
+    src: "/audio/bg-music.mp3",
+    autoplayAfterIntro: true,
+    loop: true,
+    volume: 0.6
   }
 }
 ```
@@ -107,7 +121,8 @@ export const data: AppData = {
 
 - UI MUST render from this data
 - NO placeholder text allowed outside this file
-- Structure MUST remain consistent
+- Audio MUST come from data.audio
+- Audio MUST NOT be hardcoded
 
 ---
 
