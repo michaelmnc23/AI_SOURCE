@@ -2,8 +2,8 @@
 
 ## Purpose
 
-This prompt is the SINGLE authoritative prompt used to generate the UI.
-It MUST be updated whenever any system rule changes.
+This prompt is the SINGLE executable instruction used with Codex.
+It references all system specs and behavior rules.
 
 ---
 
@@ -16,46 +16,53 @@ Use this repository as the single source of truth.
 
 ---
 
-### REQUIRED FILES
+## REQUIRED FILES
 
+### System Behavior (HOW to behave)
+- /docs/system/codex-behavior.md
+
+### Architecture + System
 - /docs/ui/orbit-system.md
 - /docs/scene-architecture.md
+
+### Visual + Layout
 - /docs/ui/orbit-visual-spec.md
 - /docs/ui/orbit-layout-spec.md
 - /docs/ui/color-system.md
+
+### Data
 - /docs/data/data-contract.md
-- /docs/codex-master-prompt.md
 
 ---
 
-### CRITICAL RULE
+## CRITICAL RULE
 
-Follow codex-master-prompt.md STRICT MODE.
+You MUST follow /docs/system/codex-behavior.md strictly.
 
-No approximation.
 No guessing.
+No approximation.
+No deviation.
 
 ---
 
-### DATA RULE
+## DATA RULE
 
-- Use data structure from data-contract.md
-- All UI content MUST come from data
+- All UI content MUST come from data-contract.md
 - Initials MUST be computed dynamically:
 
 const initials = `${personA[0]} & ${personB[0]}`
 
 ---
 
-### TASK
+## TASK
 
 Generate full Next.js (App Router) + React + Framer Motion implementation.
 
 ---
 
-### VALIDATION
+## VALIDATION
 
-Before output:
+Before output, ensure:
 
 - Layout matches orbit-layout-spec EXACTLY
 - Colors match color-system EXACTLY
@@ -69,7 +76,7 @@ If ANY fails:
 
 ---
 
-### OUTPUT
+## OUTPUT
 
 Return full working code only.
 No explanation.
