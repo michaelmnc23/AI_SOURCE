@@ -1,292 +1,444 @@
-# CODEX EXECUTION PROMPT — v2 (PIXEL + MOTION LOCKED, SELF-CONTAINED)
+# CODEX EXECUTION PROMPT — v4.1 (CINEMATIC LOCKED MODE)
 
 ## ROLE
-You are a deterministic renderer.
+You are a senior cinematic UI engineer and senior Next.js App Router architect.
 
-You DO NOT design.
-You DO NOT infer.
-You DO NOT improvise.
+You are NOT designing.
+You are EXECUTING a locked cinematic experience.
 
-You EXECUTE exactly what is defined.
+This is NOT:
+- dashboard UI
+- SaaS UI
+- modal system
+- rotating orbit menu
 
----
-
-## AGENTS.md (MUST CREATE)
-
-Create `/AGENTS.md` with the following content:
-
-# AGENTS.md
-
-## Rules
-- No design decisions allowed
-- No layout changes
-- No spacing changes
-- No color changes
-- No asset invention beyond defined placeholders
-- No external fetching
-
-## System
-- Single scene only
-- OrbitSystem NEVER unmounts
-- Audio MUST persist
-
-## Motion
-- Must feel spatial, not UI
-- No modal / popup behavior
-- No instant transitions
-
-## Data
-- All content must come from local data module (see DATA MODULE below)
-- Assets must use /public paths
-
-Precision over creativity.
+This IS:
+- cinematic memory traversal
+- emotional spatial experience
+- immersive wedding memory world
 
 ---
 
-## SYSTEM TYPE
+# CRITICAL EXECUTION RULES
 
-Cinematic spatial experience.
-NOT a website.
-NOT a dashboard.
+DO NOT:
+- simplify the layout
+- redesign composition
+- invent UI
+- use popup cards
+- use modal behavior
+- use generic Tailwind cards
+- create fast rotating orbit
+- make user chase moving nodes
+- leave sections empty
+- omit navigation controls
+- start directly at orbit screen
 
-User explores memories in space.
-
----
-
-## STATE MODEL
-
-type SceneState = "intro" | "orbit" | "memory"
-
-type AppState = {
-  scene: SceneState
-  activeNodeId: string | null
-  history: string[]
-}
-
----
-
-## RENDER TREE (LOCKED)
-
-SceneRoot
- ├── Audio (persistent)
- ├── BackgroundLayer
- ├── CameraWrapper (controls scale/blur)
- │     └── OrbitSystem (NEVER unmount)
- ├── MemoryLayer
- ├── UIOverlay
- └── InvitationIntro (conditional)
+YOU MUST:
+- create intro invitation scene
+- create cinematic memory traversal
+- create atmospheric layered world
+- preserve persistent orbit world
+- simulate entering memories physically
+- render real visible dummy content
+- use directional transitions
+- match cinematic mockup composition closely
 
 ---
 
-## ORBIT LAYOUT (PIXEL LOCKED)
+# EXPERIENCE PHILOSOPHY
 
-- Total nodes: 5
-- Radius: 220px (desktop), 160px (mobile)
-- Center: exact viewport center
+Orbit is NOT a solar system.
 
-Angles (degrees):
-- couple: 270°
-- story: 342°
-- gallery: 54°
-- event: 126°
-- interaction: 198°
+Orbit is:
+- floating memories
+- emotional navigation
+- suspended dreamlike space
 
-Position formula:
-x = cos(angle) * radius
-y = sin(angle) * radius
+The user should feel:
+“I am entering memories.”
 
-MUST be mathematically correct.
-NO visual approximation.
+NOT:
+“I opened a popup.”
 
 ---
 
-## CENTER CORE (LOCKED)
+# REQUIRED EXPERIENCE FLOW
 
-- Size: 140px
-- Perfect circle
-- Strongest glow in entire scene
-
-Glow layers:
-1. inner: solid warm gold
-2. mid: radial gradient (gold → transparent)
-3. outer: blurred bloom
-
-Dynamic initials:
-const initials = `${personA[0]} & ${personB[0]}`
+1. Invitation Intro
+2. Open Invitation Sequence
+3. Orbit Memory Field
+4. Enter Memory Transition
+5. Memory Experience
+6. Lateral Memory Navigation
+7. Return To Orbit
 
 ---
 
-## NODE DESIGN (LOCKED)
+# INTRO INVITATION SCREEN (MANDATORY)
 
-- Size: 64px
-- Shape: circle
-- Glow intensity: medium
+The app MUST start with:
+- fullscreen cinematic intro
+- NO orbit initially visible
 
-Idle:
-- scale: 1
-- subtle breathing (1 → 1.03)
+Required content:
+- couple names
+- subtitle
+- ambient particles
+- warm cinematic glow
+- elegant typography
+- Open Invitation button
 
-Hover / Tap:
-- scale: 1.08
-- glow increases
-
----
-
-## COLOR SYSTEM (LOCKED)
+Button style:
+- cinematic
+- glowing
+- elegant
+- animated softly
 
 Background:
-- #0F0E0D (base)
-- gradient to #1A1715
-
-Primary Glow:
-- #D6A85A
-
-Secondary:
-- #F2D7A1
-
-Text:
-- #FFFFFF (primary)
-- #CFCFCF (secondary)
-
-NO deviation allowed.
+- layered particles
+- subtle fog
+- warm cinematic gradient
+- depth atmosphere
 
 ---
 
-## ORBIT BEHAVIOR (LOCKED)
+# OPEN INVITATION TRANSITION
 
-- rotation duration: 120s per full rotation
-- linear easing
-- MUST feel almost static
+When clicking Open Invitation:
 
-User must NOT chase nodes.
+1. intro dissolves softly
+2. particles spread outward
+3. camera moves through particles
+4. orbit world slowly appears
+5. center core forms
+6. nodes materialize progressively
+7. music fades in
+8. orbit enters calm idle state
 
----
+Duration:
+2200ms–3500ms
 
-## CAMERA SYSTEM (CRITICAL)
-
-CameraWrapper controls:
-
-- scale
-- blur
-- opacity (optional)
-
-OrbitSystem MUST NOT contain camera logic.
-
----
-
-## MEMORY TRANSITION (MOTION LOCKED)
-
-Total duration: 800ms
-
-Phase 1 (0–150ms):
-- clicked node scale: 1 → 1.1
-- other nodes dim
-
-Phase 2 (150–600ms):
-- CameraWrapper scale: 1 → 1.15
-- Orbit blur: 0px → 12px
-- Orbit opacity: 1 → 0.3
-
-Phase 3 (600–800ms):
-- MemoryLayer enters FROM node direction
-- translate: 20–40px from node vector
-- fade + scale in
+Must feel:
+- magical
+- cinematic
+- emotional
+- luxurious
 
 ---
 
-## MEMORY STATE
+# ORBIT MEMORY FIELD
 
-- Orbit still visible (blurred)
-- Depth layering required:
-  - Memory: sharp
-  - Orbit: soft
+The orbit MUST resemble floating emotional memories.
+
+NOT:
+- active spinning menu
+- gameplay orbit
+- rotating target system
+
+Instead:
+- almost static
+- drifting softly
+- subtle breathing movement
+- floating lantern feeling
+- underwater dreamlike motion
+
+Allowed motion:
+- 1 revolution every 120–180 seconds MAXIMUM
+- preferably ambient drift only
+
+User must NEVER chase nodes.
 
 ---
 
-## DATA MODULE (INLINE, NO EXTERNAL REFERENCE)
+# CENTER CORE
 
-You MUST create a local file:
+Large glowing emotional core.
 
+Contains:
+Dynamic initials from data.
+
+Example:
+Aurelia + Rory
+=> A & R
+
+Visual requirements:
+- strongest glow in scene
+- layered bloom
+- radial aura
+- subtle breathing pulse
+- atmospheric haze
+- warm gold lighting
+
+---
+
+# ORBIT NODES
+
+Nodes are memory bubbles.
+
+Required nodes:
+- Couple
+- Story
+- Gallery
+- Event
+- RSVP / Wishes
+
+Each node MUST contain:
+- image thumbnail
+- cinematic glow border
+- warm lighting
+- subtle hover response
+- visible label
+
+DO NOT use generic icons.
+
+Use image thumbnails from:
+/public/images/
+
+---
+
+# MEMORY ENTRY TRANSITION (CRITICAL)
+
+FORBIDDEN:
+- popup card
+- blur + modal
+- instant content appearance
+
+REQUIRED SEQUENCE:
+
+1. selected node enlarges
+2. glow intensifies
+3. surrounding orbit softens
+4. camera pushes inward
+5. particles trail toward node
+6. orbit fades deeper into background
+7. node expands into memory world
+8. memory content resolves progressively
+
+The user must feel:
+traveling INTO the memory.
+
+Duration:
+1500ms–2500ms
+
+---
+
+# MEMORY EXPERIENCE
+
+Memory scenes are NOT cards.
+
+They must feel:
+- cinematic
+- layered
+- atmospheric
+- spatial
+- emotionally framed
+
+FORBIDDEN:
+- black floating modals
+- centered popup cards
+- dashboard panels
+
+Required:
+- asymmetrical composition
+- cinematic framing
+- glow layering
+- soft edge blending
+- atmospheric depth
+
+---
+
+# STORY MEMORY
+
+Must contain:
+- cinematic hero image
+- emotional typography
+- visible timeline
+- descriptive text
+- elegant spacing
+
+---
+
+# GALLERY MEMORY
+
+Must contain:
+- cinematic gallery
+- layered depth
+- floating transitions
+- visible preview images
+
+---
+
+# EVENT MEMORY
+
+Must contain:
+- date
+- time
+- location
+- CTA buttons
+- cinematic event framing
+
+---
+
+# RSVP / WISHES MEMORY
+
+Must contain:
+- visible tabs
+- interaction sections
+- elegant forms
+- atmospheric styling
+
+---
+
+# UI OVERLAY (MANDATORY)
+
+After intro opens, ALWAYS show:
+
+- previous
+- next
+- back
+- reset orbit
+- audio toggle
+
+Style:
+- minimal
+- glowing
+- cinematic
+- subtle
+
+---
+
+# AUDIO SYSTEM
+
+Background music REQUIRED.
+
+Behavior:
+- starts ONLY after opening invitation
+- loops continuously
+- fades in smoothly
+- persists across all transitions
+
+Audio path:
+/public/audio/background.mp3
+
+---
+
+# COLOR SYSTEM
+
+Primary tones:
+- #f6c177
+- #e0a96d
+- #b97a56
+- #2b160f
+- #140d0a
+
+Background:
+- deep warm brown-black
+
+Scene MUST include:
+- cinematic fog
+- vignette
+- bloom illusion
+- radial atmosphere
+- particle dust
+- layered glow
+
+Empty dark background is FORBIDDEN.
+
+---
+
+# DATA CONTRACT
+
+ALL content MUST come from:
 /lib/data.ts
 
-Use THIS EXACT structure and placeholder data:
+NO hardcoded content.
 
-export const data = {
-  couple: {
-    personA: "Aurelia",
-    personB: "Rory"
-  },
-  story: [
-    { title: "First Meet", description: "We met unexpectedly." },
-    { title: "Falling in Love", description: "Moments became memories." }
-  ],
-  gallery: [
-    "/images/gallery1.jpg",
-    "/images/gallery2.jpg",
-    "/images/gallery3.jpg"
-  ],
-  event: {
-    date: "2026-12-12",
-    location: "Jakarta"
-  },
-  audio: "/audio/bg-music.mp3"
-}
+Data MUST include:
+- couple names
+- initials
+- subtitle
+- story timeline
+- gallery images
+- event details
+- RSVP content
+- wishes content
+- audio path
 
 ---
 
-## ASSETS (PLACEHOLDER RULE)
+# PLACEHOLDER ASSETS
 
-You MUST create placeholder assets in:
+If real assets unavailable:
+- create placeholder images
+- create placeholder audio
+- preserve exact file paths
 
+Paths:
 /public/images/
 /public/audio/
 
-Examples:
-- /public/images/gallery1.jpg
-- /public/audio/bg-music.mp3
-
-These can be empty or dummy files.
-
-DO NOT fetch external assets.
-
 ---
 
-## AUDIO
+# REQUIRED FILE STRUCTURE
 
-- starts ONLY after user interaction
-- auto loop
-- persists across state changes
-- controlled via useRef
-
----
-
-## OUTPUT STRUCTURE
-
-/app
 /components/scene
-/lib/data.ts
-/styles/globals.css
-/public/images
-/public/audio
+- SceneRoot.tsx
+- OrbitSystem.tsx
+- OrbitNode.tsx
+- MemoryLayer.tsx
+- UIOverlay.tsx
+- BackgroundLayer.tsx
+- InvitationIntro.tsx
+
+/lib
+- data.ts
+
+/styles
+- globals.css
 
 ---
 
-## VALIDATION (MUST PASS ALL)
+# MOTION RULES
 
-- Pixel layout matches spec
-- Orbit perfectly radial
-- No hardcoded content outside data module
-- Motion is directional
-- Memory emerges from node
-- Orbit never unmounts
-- Audio persists
+Use:
+- Framer Motion
+- cinematic easing
+- soft acceleration
+- slow deceleration
+- transform-based animation
 
-IF ANY FAILS → FIX BEFORE OUTPUT
+FORBIDDEN:
+- abrupt transitions
+- instant appearance
+- mechanical movement
+- snappy UI feel
 
 ---
 
-## FINAL DIRECTIVE
+# FINAL VALIDATION
 
-You are rendering a system, not building UI.
+Before finishing verify:
+
+- intro invitation exists
+- open invitation button exists
+- orbit is NOT actively rotating
+- nodes use thumbnails
+- content is visible
+- navigation controls exist
+- memory transition feels spatial
+- no popup cards exist
+- orbit remains persistent
+- audio works correctly
+- visuals resemble cinematic mockup
+
+If ANY fail:
+FIX BEFORE OUTPUT.
+
+---
+
+# FINAL DIRECTIVE
+
+You are rendering a cinematic memory world.
 
 Precision over creativity.
