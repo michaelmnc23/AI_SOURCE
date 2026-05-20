@@ -1,4 +1,4 @@
-# CODEX EXECUTION PROMPT — v4.1 (CINEMATIC LOCKED MODE)
+# CODEX EXECUTION PROMPT — v4.2 (CINEMATIC LOCKED MODE)
 
 ## ROLE
 You are a senior cinematic UI engineer and senior Next.js App Router architect.
@@ -33,6 +33,8 @@ DO NOT:
 - leave sections empty
 - omit navigation controls
 - start directly at orbit screen
+- silently downgrade animation architecture
+- replace Framer Motion with CSS-only fallback
 
 YOU MUST:
 - create intro invitation scene
@@ -43,6 +45,7 @@ YOU MUST:
 - render real visible dummy content
 - use directional transitions
 - match cinematic mockup composition closely
+- preserve interaction usability while enhancing visuals
 
 ---
 
@@ -308,6 +311,39 @@ Style:
 
 ---
 
+# POINTER EVENTS CONTRACT (CRITICAL)
+
+ALL decorative and atmospheric layers MUST use:
+pointer-events: none
+
+Examples:
+- particles
+- fog
+- vignette
+- radial glow
+- cinematic overlays
+- atmosphere layers
+- orbit visual rings
+- decorative gradients
+- bloom layers
+
+ONLY actual interactive elements may use:
+pointer-events: auto
+
+Interactive elements include:
+- Open Invitation button
+- orbit nodes
+- overlay controls
+- tabs
+- forms
+- CTA buttons
+
+The interface MUST remain clickable after all visual effects are added.
+
+Invisible overlays blocking interaction are FORBIDDEN.
+
+---
+
 # AUDIO SYSTEM
 
 Background music REQUIRED.
@@ -401,12 +437,24 @@ Paths:
 
 # MOTION RULES
 
+Framer Motion is REQUIRED.
+
+DO NOT silently replace it with:
+- CSS-only transitions
+- keyframe-only fallback
+- partial animation downgrade
+
+If Framer Motion installation fails:
+- explicitly report the failure
+- stop replacing cinematic orchestration with simplified fallback behavior
+
 Use:
 - Framer Motion
 - cinematic easing
 - soft acceleration
 - slow deceleration
 - transform-based animation
+- layered transition orchestration
 
 FORBIDDEN:
 - abrupt transitions
@@ -431,6 +479,9 @@ Before finishing verify:
 - orbit remains persistent
 - audio works correctly
 - visuals resemble cinematic mockup
+- all interactive elements remain clickable
+- no invisible overlays block interaction
+- Framer Motion orchestration is active
 
 If ANY fail:
 FIX BEFORE OUTPUT.
